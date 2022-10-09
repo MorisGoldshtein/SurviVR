@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test2.unity
     guid: 4504e2ecd14b28b4e896723320f749b2
+  - enabled: 1
+    path: Assets/Scenes/Fist.unity
+    guid: 495fe88b8eb449e4280e8c3c911be252
+  - enabled: 1
+    path: Assets/Scenes/Dungeon.unity
+    guid: 0c700d79202a83b47babcb3961617407
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a7d3b4973a41f6041b3b7f1d18c58387, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9abedefc8fd96c5448deea722dff97ab, type: 2}

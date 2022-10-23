@@ -2,8 +2,6 @@ Using template 'C:/Program Files/Unity/Hub/Editor/2021.3.9f1/Editor/Data/Playbac
 
 android.hardware.vulkan.version was added because:
 	One of the graphics devices was Vulkan
-supports-gl-texture elements added because:
-	TextureSupport was not set to generic
 android.permission.INTERNET was added because:
 	UnityEngine.Networking was present in:
 		Facebook.Wit.TTS-FeaturesChecked.txt
@@ -33,8 +31,10 @@ android.permission.RECORD_AUDIO, android.permission.MODIFY_AUDIO_SETTINGS, andro
 		Oculus.LipSync-FeaturesChecked.txt
 android.hardware.touchscreen.multitouch, android.hardware.touchscreen.multitouch.distinct were enabled because:
 	UnityEngine.Input::GetTouch was present in:
+		Assembly-CSharp-FeaturesChecked.txt
 		Unity.XR.Interaction.Toolkit-FeaturesChecked.txt
 		UnityEngine.UI-FeaturesChecked.txt
 	UnityEngine.Input::get_touchCount was present in:
+		Assembly-CSharp-FeaturesChecked.txt
 		Unity.XR.Interaction.Toolkit-FeaturesChecked.txt
 		UnityEngine.UI-FeaturesChecked.txt

@@ -405,6 +405,7 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/VoiceSDK.Runtime.ref.dll"
 "Assets/AurynSky/Dungeon Pack/Scripts/SpikeTrapDemo.cs"
 "Assets/AurynSky/Dungeon Pack/Scripts/TrapDoorDemo.cs"
+"Assets/NewBehaviourScript.cs"
 "Assets/Oculus/SampleFramework/Core/CustomHands/Scripts/Hand.cs"
 "Assets/Oculus/SampleFramework/Core/CustomHands/Scripts/HandPose.cs"
 "Assets/Oculus/SampleFramework/Core/DebugUI/Scripts/DebugUIBuilder.cs"

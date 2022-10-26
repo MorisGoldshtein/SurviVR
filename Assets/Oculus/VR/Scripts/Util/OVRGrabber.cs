@@ -266,6 +266,11 @@ public class OVRGrabber : MonoBehaviour
 
         if (closestGrabbable != null)
         {
+
+            // MODIFIED based on https://answers.unity.com/questions/1539937/hide-oculus-avatar-handshide-oculus-avatar-hands.html
+            // cyanunity
+            SkinnedMeshRenderer custom_hand_to_hide_on_grab = GetComponentInChildren<SkinnedMeshRenderer>();
+
             if (closestGrabbable.isGrabbed)
             {
                 closestGrabbable.grabbedBy.OffhandGrabbed(closestGrabbable);
@@ -280,12 +285,30 @@ public class OVRGrabber : MonoBehaviour
             // Set up offsets for grabbed object desired position relative to hand.
             if(m_grabbedObj.snapPosition)
             {
-                m_grabbedObjectPosOff = m_gripTransform.localPosition;
-                if(m_grabbedObj.snapOffset)
+                //MODIFIED BASED ON https://forum.unity.com/threads/vr-oculus-sdk-touch-controller-snap-position-snap-offset-grab-a-gun.512853/
+                //edufireheart
+                // m_grabbedObjectPosOff = m_gripTransform.localPosition;
+                // if(m_grabbedObj.snapOffset)
+                // {
+                //     Vector3 snapOffset = m_grabbedObj.snapOffset.position;
+                //     if (m_controller == OVRInput.Controller.LTouch) snapOffset.x = -snapOffset.x;
+                //     m_grabbedObjectPosOff += snapOffset;
+                // }
+
+                if (m_grabbedObj.snapOffset)
                 {
-                    Vector3 snapOffset = m_grabbedObj.snapOffset.position;
-                    if (m_controller == OVRInput.Controller.LTouch) snapOffset.x = -snapOffset.x;
-                    m_grabbedObjectPosOff += snapOffset;
+                    Vector3 snapOffset = -m_grabbedObj.snapOffset.localPosition;
+                    Vector3 snapOffsetScale = m_grabbedObj.snapOffset.lossyScale;
+                    snapOffset = new Vector3(snapOffset.x * snapOffsetScale.x, snapOffset.y * snapOffsetScale.y, snapOffset.z * snapOffsetScale.z);
+                    if (m_controller == OVRInput.Controller.LTouch)
+                    {
+                        snapOffset.x = -snapOffset.x;
+                    }
+                    m_grabbedObjectPosOff = snapOffset;
+                }
+                else
+                {
+                    m_grabbedObjectPosOff = Vector3.zero;
                 }
             }
             else
@@ -297,10 +320,35 @@ public class OVRGrabber : MonoBehaviour
 
             if (m_grabbedObj.snapOrientation)
             {
-                m_grabbedObjectRotOff = m_gripTransform.localRotation;
-                if(m_grabbedObj.snapOffset)
+                //MODIFIED BASED ON https://forum.unity.com/threads/vr-oculus-sdk-touch-controller-snap-position-snap-offset-grab-a-gun.512853/
+                // m_grabbedObjectRotOff = m_gripTransform.localRotation;
+                // if(m_grabbedObj.snapOffset)
+                // {
+                //     m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;
+                // }
+
+                if (m_grabbedObj.snapOffset)
                 {
-                    m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;
+
+                    // MY PERSONAL FINDING: WHEN OBJ IS PICKED UP IN THE LEFT HAND, it is 180 degrees around z axis different than if it was held in right hand
+                    // note: the rotation on the empty GameObject used for snapoffset works for when the obj is in right hand
+                    // Solution: Take the empty GameObject used for snapoffset and rotate it 180 degrees around z axis just before the Rotation offset is changed for m_grabbedobj
+                    // and then change it back once the inverse quaternion happens -> simulates as though the obj was in the right hand so my rotations work
+
+                    if (m_controller == OVRInput.Controller.LTouch)
+                    {
+                        m_grabbedObj.snapOffset.Rotate(new Vector3(0,0,180));
+                        m_grabbedObjectRotOff = Quaternion.Inverse(m_grabbedObj.snapOffset.localRotation);                    
+                        m_grabbedObj.snapOffset.Rotate(new Vector3(0,0,-180));
+                    }
+                    else{
+                        m_grabbedObjectRotOff = Quaternion.Inverse(m_grabbedObj.snapOffset.localRotation);                    
+                    }
+                    
+                }
+                else
+                {
+                    m_grabbedObjectRotOff = Quaternion.identity;
                 }
             }
             else
@@ -317,6 +365,9 @@ public class OVRGrabber : MonoBehaviour
             // NOTE: This is to get around having to setup collision layers, but in your own project you might
             // choose to remove this line in favor of your own collision layer setup.
             SetPlayerIgnoreCollision(m_grabbedObj.gameObject, true);
+
+            // MODIFIED: THIS REACTIVATES THE MESHRENDERER
+            custom_hand_to_hide_on_grab.enabled = false;
 
             if (m_parentHeldObject)
             {
@@ -352,6 +403,10 @@ public class OVRGrabber : MonoBehaviour
     {
         if (m_grabbedObj != null)
         {
+            // MODIFIED based on https://answers.unity.com/questions/1539937/hide-oculus-avatar-handshide-oculus-avatar-hands.html
+            // cyanunity
+            SkinnedMeshRenderer custom_hand_to_hide_on_grab = GetComponentInChildren<SkinnedMeshRenderer>();
+
 			OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };
             OVRPose offsetPose = new OVRPose { position = m_anchorOffsetPosition, orientation = m_anchorOffsetRotation };
             localPose = localPose * offsetPose;
@@ -361,6 +416,9 @@ public class OVRGrabber : MonoBehaviour
 			Vector3 angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(m_controller);
 
             GrabbableRelease(linearVelocity, angularVelocity);
+
+            // MODIFIED: THIS REACTIVATES THE MESHRENDERER
+            custom_hand_to_hide_on_grab.enabled = true;
         }
 
         // Re-enable grab volumes to allow overlap events

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{d394a22a-0c78-ac1c-368a-c8c9a10f7fe9}</ProjectGuid>
+    <ProjectGuid>{6559694e-d5a5-5cf5-5f2c-29f33fafc54a}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -67,6 +67,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\PassthroughSurface.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportPoint.cs" />
      <Compile Include="Assets\AurynSky\Dungeon Pack\Scripts\TrapDoorDemo.cs" />
+     <Compile Include="Assets\Scripts\NinjaHealth.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\AppDeeplink\UI\CustomDebugUI.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\PassthroughController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Scripts\WindmillController.cs" />
@@ -76,6 +77,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Usage\DebugUI\DebugUISample.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\BrushController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Firebase\AnalyticsUI.cs" />
+     <Compile Include="Assets\WildWestAssets\Main_Menu.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\DistanceGrab\Scripts\DistanceGrabberSample.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\HandsManager.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\SceneSampler.cs" />
@@ -85,6 +87,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Scripts\TrainCrossingController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\HandMeshMask.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportTransitionBlink.cs" />
+     <Compile Include="Assets\Blink\Art\Animals\Stylized\Demo_Animals\DemoData\AnimationDemo.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Scripts\BouncingBallLogic.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportTransitionInstant.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\OverlayPassthrough.cs" />
@@ -116,8 +119,10 @@
      <Compile Include="Assets\Scripts\KeyboardMovement.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\CharacterCameraConstraint.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Scripts\SimpleResizer\SimpleResizable.cs" />
+     <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportTransitionWarp.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Video\Scripts\VectorUtil.cs" />
+     <Compile Include="Assets\Scripts\NinjaController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\InteractableToolsCreator.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Firebase\SampleUI.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportOrientationHandler.cs" />
@@ -133,6 +138,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Core\Video\Scripts\ButtonDownListener.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportAimHandlerLaser.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\PassthroughBrush.cs" />
+     <Compile Include="Assets\Nokobot\Modern Guns - Handgun\_Demo Assets\SimpleShoot.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\ColliderZone.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\Video\Scripts\MoviePlayerSampleControls.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\SPPquad.cs" />
@@ -165,46 +171,68 @@
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\PassthroughStyler.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SpatialAnchor\Scripts\AnchorUIManager.cs" />
      <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\XingLightShader.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\Hidden.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\Wall.shader" />
      <None Include="Assets\SyntyStudios\PolygonStarter\PolygonPrototype\Shaders\Prototype_Glass_Global.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\ButtonGlow.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Materials\SelectivePassthrough.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Materials\SelectivePassthroughSoft.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\OverwriteAlpha.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\DistanceGrab\Materials\CrosshairZCheat.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\GradientSkybox.shader" />
      <None Include="Assets\SyntyStudios\PolygonStarter\PolygonPrototype\Shaders\Prototype_Object.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Materials\PassthroughLine.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Materials\BackgroundColor.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Materials\FatFingers.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\InvisibleOccluder.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\OculusSampleTrainPropsShader.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\DistanceGrab\Materials\ToyCubeWithOutline.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\Locomotion\Materials\ColumnGlow.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\AurynSky\Dungeon Pack\READ ME.txt" />
+     <None Include="Assets\Nokobot\Modern Guns - Handgun\README.txt" />
      <None Include="Assets\SyntyStudios\PolygonStarter\PolygonPrototype\Shaders\Prototype_Global.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\Video\Shaders\Multiview Stereo.shader" />
      <None Include="Assets\Seven Swords\Swords\Shader\ToonSwords.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\DebugUI\Fonts\Montserrat\OFL.txt" />
      <None Include="Assets\Oculus\SampleFramework\Usage\OVROverlayCanvas\Shaders\UI Default Correct.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\CustomHands\Shaders\Hands_01.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Shaders\OculusSampleAlphaHandOutline.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Materials\GlowEffect.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\OculusSampleTrainSmokeShader.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\OVROverlayCanvas\Shaders\UI Prerendered Opaque.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\Video\Plugins\Android\Audio360\NOTICE.txt" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\PassthroughShadow.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\Locomotion\Shaders\TriPlanarWorld.shader" />
      <None Include="Assets\SyntyStudios\PolygonStarter\PolygonPrototype\Shaders\Prototype_Glass_Object.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\Video\Plugins\Android\Audio360\ThirdPartyNotices.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\SceneObjectPreview.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\OVROverlayCanvas\Shaders\UI Prerendered.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\CustomHands\Materials\Hands_Transparent.shader" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\StylizedOcclusions.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\CustomHands\Shaders\Hands_02.shader" />
      <None Include="Assets\Oculus\SampleFramework\Usage\SceneManager\Shaders\GlassMask.shader" />
      <None Include="Assets\Oculus\SampleFramework\Core\CustomHands\Materials\Hands_DiffBump.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\Oculus\SampleFramework\license.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -441,13 +469,13 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="ReportGeneratorMerged">
-        <HintPath>H:\SurviVR\Library\PackageCache\com.unity.testtools.codecoverage@1.0.1\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\PackageCache\com.unity.testtools.codecoverage@1.0.1\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>H:\SurviVR\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>H:\SurviVR\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -822,257 +850,257 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.CoreUtils.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Management">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Oculus.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Management.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Interaction.Toolkit">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Subsystem.Registration">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Environments">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.CoreUtils">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Interaction.Toolkit.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.Oculus">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.XR.Oculus.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.XR.Oculus.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-        <HintPath>H:\SurviVR\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+        <HintPath>C:\Users\mgold\Desktop\SurviVR-enemyHealth\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="AssistantCoreSDKEditor.csproj">
-      <Project>{ddd816a5-a1ca-4ebf-d1bc-333fac001764}</Project>
+      <Project>{315af218-1b15-abfb-e99b-d94934533a12}</Project>
       <Name>AssistantCoreSDKEditor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Voice.Demo.csproj">
-      <Project>{b3544e12-2c75-8143-4923-d2858c677bca}</Project>
+      <Project>{ae67b337-00db-2a0a-b967-b764631929a9}</Project>
       <Name>Oculus.Voice.Demo</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.AudioManager.csproj">
-      <Project>{c7eeafda-7ab4-cab0-0bf8-eb6ae07614be}</Project>
+      <Project>{fe8c93d9-2f97-a2a7-d643-99a8453d6929}</Project>
       <Name>Oculus.AudioManager</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Interaction.csproj">
-      <Project>{5cb6a67e-0192-8b8f-b3a2-41379bafe8e2}</Project>
+      <Project>{f3f375a4-2f06-d1a8-f5c8-38e70cbc5566}</Project>
       <Name>Oculus.Interaction</Name>
     </ProjectReference>
     <ProjectReference Include="AssistantCoreSDKRuntime.csproj">
-      <Project>{84311b08-d08f-08c5-acf1-4c4c72c94d07}</Project>
+      <Project>{5c7be5de-47ea-1c7b-65a9-d65d4039cbde}</Project>
       <Name>AssistantCoreSDKRuntime</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.AudioManager.Utils.Editor.csproj">
-      <Project>{c2f73540-996c-ce30-fd30-f02ca96f6583}</Project>
+      <Project>{c5c9599a-ef5d-8fcb-fe6a-d48b390713ff}</Project>
       <Name>Oculus.AudioManager.Utils.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.Wit.Conduit.csproj">
-      <Project>{e3cadf1a-a8cb-c1d9-94ff-6751149ade0a}</Project>
+      <Project>{f4a36458-c913-5020-b14b-2f50b29f7d02}</Project>
       <Name>Facebook.Wit.Conduit</Name>
     </ProjectReference>
     <ProjectReference Include="LitJson.csproj">
-      <Project>{9b34e76a-ad09-0b7a-8982-975437863ab3}</Project>
+      <Project>{87c6f8a7-0e23-d327-99a9-eab7981ff94b}</Project>
       <Name>LitJson</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.WitAI.csproj">
-      <Project>{530e8c5b-c703-66f9-5463-a58b224da633}</Project>
+      <Project>{9aa28243-d1de-4c9a-5dbb-52af461c554e}</Project>
       <Name>Facebook.WitAI</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.VR.csproj">
-      <Project>{a0bfb2ec-3bca-eb8d-e12e-e1f5cc35c495}</Project>
+      <Project>{b8e568e8-1e17-6ca9-386a-80116b8c4dce}</Project>
       <Name>Oculus.VR</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Platform.csproj">
-      <Project>{5f2aec14-5442-3a2c-e1d3-932f30c837eb}</Project>
+      <Project>{1064c5f9-33a2-faec-008c-c176878bd718}</Project>
       <Name>Oculus.Platform</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.AudioManager.Audio.Editor.csproj">
-      <Project>{d451c7b1-4e26-2ec6-9ba3-4f0acb4dd135}</Project>
+      <Project>{7bfdc8f9-590c-fc63-1105-53e4ff6a3cb3}</Project>
       <Name>Oculus.AudioManager.Audio.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Spatializer.Editor.csproj">
-      <Project>{bbba0c50-7dd0-c9f9-bf55-48e6de3a9994}</Project>
+      <Project>{e1763267-40b6-bd0b-8365-521bf9a3715a}</Project>
       <Name>Oculus.Spatializer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.Wit.TTS.csproj">
-      <Project>{9102c34d-7108-76f7-18e8-51936126c769}</Project>
+      <Project>{a2c16a5e-5706-e142-816d-a2af56d5577e}</Project>
       <Name>Facebook.Wit.TTS</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.Wit.TTS.Editor.csproj">
-      <Project>{bfd50b0c-0051-3983-f0f4-dd9a10a63503}</Project>
+      <Project>{eb5f6b3c-8b3c-f861-3d54-426605e03c56}</Project>
       <Name>Facebook.Wit.TTS.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Interaction.Samples.csproj">
-      <Project>{f28f7b0b-3cbe-f358-44ce-3ccf195f426c}</Project>
+      <Project>{69df19a5-19b0-aaab-3622-0a0796379320}</Project>
       <Name>Oculus.Interaction.Samples</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.VR.Editor.csproj">
-      <Project>{d593ae3d-8004-ab6e-4262-424e2c5c838c}</Project>
+      <Project>{030ec8c4-77c0-eeb1-0359-cfdbd90d3b24}</Project>
       <Name>Oculus.VR.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Interaction.Samples.Editor.csproj">
-      <Project>{e228fc49-68bb-fc13-f987-5af9c29adf37}</Project>
+      <Project>{c29b7a5b-0297-2dac-7570-629aad877803}</Project>
       <Name>Oculus.Interaction.Samples.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Interaction.Editor.csproj">
-      <Project>{90fcb019-9f58-06c9-423b-7ae389270c41}</Project>
+      <Project>{cad5618f-6ecb-81e1-bb0f-ab1b4cae1346}</Project>
       <Name>Oculus.Interaction.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.VR.Scripts.Editor.csproj">
-      <Project>{27266db0-b75c-8c75-3b0b-8b6316b0780c}</Project>
+      <Project>{9ae19c41-def2-b75c-382d-64d9a15d0a8b}</Project>
       <Name>Oculus.VR.Scripts.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Spatializer.csproj">
-      <Project>{6c0170c5-8939-7894-9bf9-bed1cd74dce3}</Project>
+      <Project>{29a65f4c-9049-fb33-69f2-9dd2689e3870}</Project>
       <Name>Oculus.Spatializer</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.Wit.Conduit.Editor.csproj">
-      <Project>{796cbf42-2e44-5cf4-277f-c600e13ea002}</Project>
+      <Project>{a3fba1bf-4de7-112f-9df7-deafead5acb5}</Project>
       <Name>Facebook.Wit.Conduit.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="VoiceSDK.Editor.csproj">
-      <Project>{29594666-55a2-6f60-6098-b655df6a22ba}</Project>
+      <Project>{94f0ca3b-1ee3-77e3-39e1-15ba35f3c27d}</Project>
       <Name>VoiceSDK.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Platform.Editor.csproj">
-      <Project>{fcb18462-8988-0607-4bbf-459ad1f1ef3d}</Project>
+      <Project>{b3e0d84f-5e51-f2ba-0025-10c10f9ced06}</Project>
       <Name>Oculus.Platform.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.Interaction.InterfaceSupport.csproj">
-      <Project>{65b72097-c59c-09a1-7720-654ed8fc7639}</Project>
+      <Project>{9904384a-99e5-cae8-efe2-db24f453c0c4}</Project>
       <Name>Oculus.Interaction.InterfaceSupport</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.Wit.Editor.csproj">
-      <Project>{271d1139-d964-4023-1d60-fc2ae077b4d4}</Project>
+      <Project>{a0d10b9e-b056-5920-0a05-9c1cfc1c0eb4}</Project>
       <Name>Facebook.Wit.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.LipSync.Editor.csproj">
-      <Project>{ea994806-5b1b-14cf-1e85-65a7565738c3}</Project>
+      <Project>{367eb1fa-ea25-a50b-2363-2469d6f48395}</Project>
       <Name>Oculus.LipSync.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.Wit.TTS.Samples.csproj">
-      <Project>{1e5ac1b2-9b22-50fc-377b-2276b96567cb}</Project>
+      <Project>{f1d4604c-ee88-f82b-9dc2-35a565d125c8}</Project>
       <Name>Facebook.Wit.TTS.Samples</Name>
     </ProjectReference>
     <ProjectReference Include="Oculus.LipSync.csproj">
-      <Project>{9b6a05b6-fccf-a3df-8648-688896ca1368}</Project>
+      <Project>{0f28bfe1-6e2e-4889-12e1-a078dc55f9ed}</Project>
       <Name>Oculus.LipSync</Name>
     </ProjectReference>
     <ProjectReference Include="VoiceSDK.Runtime.csproj">
-      <Project>{b87168d5-093e-a235-f6b0-e405abb095dd}</Project>
+      <Project>{620c6cc4-4d0b-17e3-aac9-3832498077ae}</Project>
       <Name>VoiceSDK.Runtime</Name>
     </ProjectReference>
   </ItemGroup>

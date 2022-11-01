@@ -18,7 +18,7 @@ public class Main_Menu : MonoBehaviour
 
     public void PlayDillon()
     {
-        SceneManager.LoadScene("Fist");
+        SceneManager.LoadScene("Enemy AI Testing");
     }
 
     public void PlayKen()

@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("HITIT");
             SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         }
     }

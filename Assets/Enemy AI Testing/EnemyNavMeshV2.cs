@@ -52,13 +52,13 @@ public class EnemyNavMeshV2 : MonoBehaviour
         // playerInSightRange = false;  //  for testing purposes
         // playerInAttackRange = false; //  for testing purposes
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
 
     }
 
-    private void Patroling()
+    private void Patrolling()
     {
         if (!walkPointSet) 
             SearchWalkPoint();

@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyNavMeshV2 : MonoBehaviour
 {
+    Animator m_Animator;
+
     [SerializeField] private Transform movePositionTransform;   //  This is the target you are going to
     private NavMeshAgent navMeshAgent;  //  This is the AI that is being controlled
 
@@ -33,10 +35,10 @@ public class EnemyNavMeshV2 : MonoBehaviour
     }
 
     // // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
+    void Start()
+    {
+        m_Animator = gameObject.GetComponent<Animator>();
+    }
 
 
     // Update is called once per frame
@@ -55,6 +57,16 @@ public class EnemyNavMeshV2 : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            Debug.Log("Pressed P");
+            //Reset the "Crouch" trigger
+            m_Animator.ResetTrigger("WalkTrigger");
+
+            //Send the message to the Animator to activate the trigger parameter named "Jump"
+            m_Animator.SetTrigger("PunchTrigger");
+        }
 
     }
 
@@ -104,11 +116,11 @@ public class EnemyNavMeshV2 : MonoBehaviour
         if (!alreadyAttacked) 
         {
             /// Attack code here!
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             /// 
-
+            m_Animator.SetTrigger("PunchTrigger");
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

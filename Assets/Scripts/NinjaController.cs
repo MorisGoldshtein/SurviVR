@@ -31,6 +31,7 @@ public class NinjaController : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log("Ninja too high, destroyed");
+            //gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         }
     }
 

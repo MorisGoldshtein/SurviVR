@@ -10,8 +10,8 @@ public class KeyboardMovement : MonoBehaviour{
         //Value changes when W/S/UpArrow/DownArrow pressed -> between -1 and 1
         float verticalInput = Input.GetAxis("Vertical");
         // Player can rotate to left or right using keyboard keys 'Q' or 'E'
-        bool rotateLeft = Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.J);
-        bool rotateRight = Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.K);
+        bool rotateLeft = Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.K);
+        bool rotateRight = Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.J);
         // Passed to transform.Rotate() to rotate the player
         float rotation = 0;
         // Combine the inputs together into a vector

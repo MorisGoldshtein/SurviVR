@@ -24,6 +24,8 @@ public class SimpleShoot : MonoBehaviour
     public AudioSource source;
     public AudioClip fireSound;
 
+    private bool shooter = true;
+
     void Start()
     {
         if (barrelLocation == null)
@@ -33,17 +35,22 @@ public class SimpleShoot : MonoBehaviour
             gunAnimator = GetComponentInChildren<Animator>();
     }
 
+    void shooterFunc()
+    {
+        shooter = true;
+    }
+
     void FixedUpdate()
     {
-        float rightTrigger = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
+        bool rightTrigger = OVRInput.Get(OVRInput.RawButton.RIndexTrigger);
         //If you want a different input, change it here
-        if (rightTrigger == 1.0f)
+        if (rightTrigger && shooter)
         {
+            shooter = false;
             //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
         }
     }
-
 
     //This function creates the bullet behavior
     void Shoot()

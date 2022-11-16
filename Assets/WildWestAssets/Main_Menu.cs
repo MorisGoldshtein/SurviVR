@@ -13,21 +13,26 @@ public class Main_Menu : MonoBehaviour
 
     public void PlayLucas()
     {
-        SceneManager.LoadScene("WildWest");
+        GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("WildWest");
     }
 
     public void PlayDillon()
     {
-        SceneManager.LoadScene("Enemy AI Testing");
+        GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("Enemy AI Testing");
     }
 
     public void PlayKen()
     {
-        SceneManager.LoadScene("Dmg Kill");
+        GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("Dmg Kill");
     }
 
-    public void PlayMoris()
+    public void PlayMorris()
     {
-        SceneManager.LoadScene("Obj Grab");
+        GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("Obj Grab");
+    }
+
+    public void RetryMenu()
+    {
+        GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().PreviousScene();
     }
 }

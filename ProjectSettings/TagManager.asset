@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Projectile
   - Enemy
+  - RoomLight
+  - SceneThing
   layers:
   - Default
   - TransparentFX

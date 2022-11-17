@@ -26,7 +26,7 @@ public class Main_Menu : MonoBehaviour
         GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("Dmg Kill");
     }
 
-    public void PlayMorris()
+    public void PlayMoris()
     {
         GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("Obj Grab");
     }

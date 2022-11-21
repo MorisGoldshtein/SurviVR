@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
-    float maxHealthPoints = 2000f;
+    float maxHealthPoints = 200f;
     float speed;
     float healthPoints;
     float spearDamage = 20f;
@@ -30,26 +30,24 @@ public class EnemyHealthManager : MonoBehaviour
 
     bool IsGrounded()
     {
-        LayerMask layerMask = ~1 << 2;
         // do a short Raycast starting from transform.position in the -Vector3.up direction (i.e. downwards) a distance of distToGround to check the ray hits a Collider
-        return Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGround, layerMask);
+        return Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGround + 1.3f);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
+    { 
+        if (Input.GetKeyDown(KeyCode.N))
         {
-            Debug.Log(current_object + " IsGrounded: " + IsGrounded());
-            //hand_Rigidbody.AddForce(transform.forward * 15f, ForceMode.Impulse);
-            m_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);
+            Vector3 launchUpward = transform.forward * -20f + transform.up * 15f;
+            m_Rigidbody.velocity = launchUpward * 1;
         }
     }
 
     void TakeDamage(float damage)
     {
         healthPoints -= damage;
-        Debug.Log("Hit registered, " + current_object + " HealthPoints at: " + healthPoints);
+        //Debug.Log("Hit registered, " + current_object + " HealthPoints at: " + healthPoints);
 
         // if damage would set healthPoints to do, gameObject is launched into stratosphere
         if (healthPoints <= damage)
@@ -68,19 +66,18 @@ public class EnemyHealthManager : MonoBehaviour
     //Code triggers on collision with another GameObject that has a Collider component with Is Trigger box checked
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("IsGrounded: " + IsGrounded());
-        Debug.Log("Name of the colliding object: " + other.gameObject.name);
-        Debug.Log("Name of the collided with object: " + gameObject.name);
-        Debug.Log("isGrounded: " + IsGrounded());
+        //Debug.Log("IsGrounded: " + IsGrounded());
+        //Debug.Log("Name of the colliding object: " + other.gameObject.name);
+        //Debug.Log("Name of the collided with object: " + gameObject.name);
         // Currently meant for collision with SpearD objects inside SpikeTrapD objects
         if (IsGrounded()) // if the GameObject is currently airborne, it shouldn't be allowed to be launched again
         {
             if(other.gameObject.name.Contains("SpearD"))
             {
                 // Create a new Vector for launching GameObject upwards
-                Vector3 launchUpward = transform.forward * -20f + transform.up * 5f;
+                Vector3 launchUpward = transform.forward * -10f + transform.up * 5f;
                 // Fetch the RigidBody component attached to the Ninja GameObject
-                Rigidbody m_Rigidbody = GetComponent<Rigidbody>();
+                //Rigidbody m_Rigidbody = GetComponent<Rigidbody>();
                 // Set upward velocity of Ninja Gameobject
                 m_Rigidbody.velocity = launchUpward * speed;
                 //m_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);

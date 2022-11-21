@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyNavMeshV2 : MonoBehaviour
 {
     Animator m_Animator;
+    // for the "hiyah" sound
+    AudioSource m_punch;
 
     [SerializeField] private Transform movePositionTransform;   //  This is the target you are going to
     private NavMeshAgent navMeshAgent;  //  This is the AI that is being controlled
@@ -47,6 +49,11 @@ public class EnemyNavMeshV2 : MonoBehaviour
         distToGround = GetComponent<Collider>().bounds.extents.y;
         enemy_Rigidbody = GetComponent<Rigidbody>();
         hand_gameObject = transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
+        // get the "hiyah" audio file attached to the AudioSource component of the enemy
+        m_punch = GetComponent<AudioSource>();
+        //set to false or else sound effect will play when scene is first starting up
+        m_punch.enabled = false;
     }
 
 
@@ -67,16 +74,23 @@ public class EnemyNavMeshV2 : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
         
-        if (!Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 40f))
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 10f))
         {
-            Debug.Log("Fall through trapdoor");
+            //Debug.Log("Fall through trapdoor");
             navMeshAgent.enabled = false;
         }
 
         if(enemy_Rigidbody.velocity.y == 0 && navMeshAgent.enabled == false)
         {
-            Debug.Log("NavMeshAgent re-enabled");
+            //Debug.Log("NavMeshAgent re-enabled");
             navMeshAgent.enabled = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Debug.Log("y-velocity: " + enemy_Rigidbody.velocity.y);
+            Debug.Log(" IsGrounded: " + IsGrounded());
+            Debug.Log(" navMeshEnabled: " + navMeshAgent.enabled);
         }
 
     }
@@ -132,7 +146,9 @@ public class EnemyNavMeshV2 : MonoBehaviour
             //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///dw
+        
+            m_punch.enabled = true;
+            m_punch.Play();
             m_Animator.SetTrigger("PunchTrigger");
             Rigidbody hand_Rigidbody = hand_gameObject.GetComponent<Rigidbody>();
             Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
@@ -147,8 +163,8 @@ public class EnemyNavMeshV2 : MonoBehaviour
 
     bool IsGrounded()
     {
-        // do a short Raycast starting from transform.position in the -Vector3.up direction (i.e. downwards) a distance of distToGround to check the ray hits a Collider
-        return Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGround+0.3f);
+        // enemy is grounded if it's not falling
+        return Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGround + 1.3f);
     }
 
     //Code triggers on collision with another GameObject that has a Collider component with Is Trigger box checked
@@ -157,10 +173,10 @@ public class EnemyNavMeshV2 : MonoBehaviour
         // Currently meant for collision with SpearD objects inside SpikeTrapD objects
         if (IsGrounded() && other.gameObject.name.Contains("SpearD")) // if the GameObject is currently airborne, it shouldn't be allowed to be launched again
         {
-            Debug.Log("navMeshAgent disabled");
+            //Debug.Log("navMeshAgent disabled");
             navMeshAgent.enabled = false;
-
         }
+        
     }
 
 
@@ -169,6 +185,7 @@ public class EnemyNavMeshV2 : MonoBehaviour
         alreadyAttacked = false;
         Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
         hand_Collider.enabled = false;
+        //m_punch.enabled = false;
     }
 
     private void TakeDamage(int damage) 

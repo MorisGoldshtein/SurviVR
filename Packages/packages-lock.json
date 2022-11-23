@@ -85,6 +85,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.postprocessing": {
+      "version": "3.2.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.probuilder": {
       "version": "5.0.6",
       "depth": 0,
@@ -93,6 +102,15 @@
         "com.unity.settings-manager": "1.0.3",
         "com.unity.modules.physics": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.recorder": {
+      "version": "2.5.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
@@ -120,6 +138,22 @@
       "source": "registry",
       "dependencies": {
         "com.unity.modules.subsystems": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.sysroot": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.sysroot.linux-x86_64": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.sysroot": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
@@ -162,6 +196,16 @@
         "com.unity.modules.animation": "1.0.0",
         "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.particlesystem": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.toolchain.macos-x86_64-linux-x86_64": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.sysroot": "1.0.0",
+        "com.unity.sysroot.linux-x86_64": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },

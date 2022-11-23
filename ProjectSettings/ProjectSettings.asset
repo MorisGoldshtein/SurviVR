@@ -166,6 +166,12 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 3019907335579857392, guid: 9abedefc8fd96c5448deea722dff97ab, type: 2}
+  - {fileID: 11400000, guid: a7d3b4973a41f6041b3b7f1d18c58387, type: 2}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -733,7 +739,20 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: UNITY_POST_PROCESSING_STACK_V2
+    EmbeddedLinux: UNITY_POST_PROCESSING_STACK_V2
+    GameCoreXboxOne: UNITY_POST_PROCESSING_STACK_V2
+    Lumin: UNITY_POST_PROCESSING_STACK_V2
+    Nintendo Switch: UNITY_POST_PROCESSING_STACK_V2
+    PS4: UNITY_POST_PROCESSING_STACK_V2
+    PS5: UNITY_POST_PROCESSING_STACK_V2
+    Stadia: UNITY_POST_PROCESSING_STACK_V2
+    Standalone: UNITY_POST_PROCESSING_STACK_V2
+    WebGL: UNITY_POST_PROCESSING_STACK_V2
+    Windows Store Apps: UNITY_POST_PROCESSING_STACK_V2
+    XboxOne: UNITY_POST_PROCESSING_STACK_V2
+    tvOS: UNITY_POST_PROCESSING_STACK_V2
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

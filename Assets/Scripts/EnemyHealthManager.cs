@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
+    Vector3 enemy_spawn_position;
     float maxHealthPoints = 200f;
     float speed;
     float healthPoints;
@@ -26,6 +27,8 @@ public class EnemyHealthManager : MonoBehaviour
         distToGround = GetComponent<Collider>().bounds.extents.y;
         m_Rigidbody = GetComponent<Rigidbody>();
         current_object = gameObject.name;
+        enemy_spawn_position = gameObject.transform.position;
+
     }
 
     bool IsGrounded()
@@ -50,10 +53,12 @@ public class EnemyHealthManager : MonoBehaviour
         //Debug.Log("Hit registered, " + current_object + " HealthPoints at: " + healthPoints);
 
         // if damage would set healthPoints to do, gameObject is launched into stratosphere
-        if (healthPoints <= damage)
+        if (healthPoints <= 0)
         {
             speed = 5;
             //Destroy(gameObject);
+            gameObject.transform.position = enemy_spawn_position;
+            healthPoints = 200f;
         }
         else
         {

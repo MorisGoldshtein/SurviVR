@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
-    Vector3 enemy_spawn_position;
     float maxHealthPoints = 200f;
     float speed;
     float healthPoints;

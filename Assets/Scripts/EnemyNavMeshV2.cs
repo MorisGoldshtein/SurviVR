@@ -26,6 +26,7 @@ public class EnemyNavMeshV2 : MonoBehaviour
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
     public GameObject projectile;
+    bool canWalk;   // set to false for 2 seconds after an attack so enemy can't move while punching
 
     // distance from the player pivot to the bottom of the player box collider
     float distToGround;
@@ -54,6 +55,7 @@ public class EnemyNavMeshV2 : MonoBehaviour
         m_punch = GetComponent<AudioSource>();
         //set to false or else sound effect will play when scene is first starting up
         m_punch.enabled = false;
+        canWalk = true;
     }
 
 
@@ -80,7 +82,7 @@ public class EnemyNavMeshV2 : MonoBehaviour
             navMeshAgent.enabled = false;
         }
 
-        if(enemy_Rigidbody.velocity.y == 0 && navMeshAgent.enabled == false)
+        if(enemy_Rigidbody.velocity.y == 0 && navMeshAgent.enabled == false && canWalk)
         {
             //Debug.Log("NavMeshAgent re-enabled");
             navMeshAgent.enabled = true;
@@ -146,16 +148,20 @@ public class EnemyNavMeshV2 : MonoBehaviour
             //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-        
-            m_punch.enabled = true;
-            m_punch.Play();
-            m_Animator.SetTrigger("PunchTrigger");
+            navMeshAgent.enabled = false;
+            canWalk = false;
+            m_punch.enabled = true; // enables audio component
+            m_punch.Play(); // plays audio "hiyah" clip
+            m_Animator.Rebind(); // resets enemy animations
+            m_Animator.SetTrigger("PunchTrigger"); // starts punch animation
             Rigidbody hand_Rigidbody = hand_gameObject.GetComponent<Rigidbody>();
-            Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
-            hand_Collider.enabled = true;
+            //Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
+            //hand_Collider.enabled = true;
             hand_Rigidbody.AddForce(transform.forward * 15f, ForceMode.Impulse);
             hand_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);
             alreadyAttacked = true;
+            Invoke(nameof(AllowPunchCollision), 1.0f);
+            Invoke(nameof(ResetAfterAttack), 1.5f);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
@@ -176,16 +182,25 @@ public class EnemyNavMeshV2 : MonoBehaviour
             //Debug.Log("navMeshAgent disabled");
             navMeshAgent.enabled = false;
         }
-        
     }
 
-
-    private void ResetAttack() 
+    private void AllowPunchCollision() // used to disable hand collider and allow enemy to walk again after 1.5 seconds (i.e. length of time it takes to finish 1 punch animation)
     {
-        alreadyAttacked = false;
+        Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
+        hand_Collider.enabled = true;
+    }
+
+    private void ResetAfterAttack() // used to disable hand collider and allow enemy to walk again after 1.5 seconds (i.e. length of time it takes to finish 1 punch animation)
+    {
         Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
         hand_Collider.enabled = false;
-        //m_punch.enabled = false;
+        m_punch.enabled = false;
+        canWalk = true;
+    }
+
+    private void ResetAttack() // used to allow enemy to attack again
+    {
+        alreadyAttacked = false;
     }
 
     private void TakeDamage(int damage) 

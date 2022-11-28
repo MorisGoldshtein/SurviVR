@@ -121,7 +121,7 @@ public class PlayerHealthManager : MonoBehaviour
             {
                 //Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed: " + current_object);
-                //Destroy(gameObject);
+                Destroy(gameObject);
 
                 // load DeathScreen scene
                 //UnityEngine.SceneManagement.SceneManager.LoadScene("DeathScreen");

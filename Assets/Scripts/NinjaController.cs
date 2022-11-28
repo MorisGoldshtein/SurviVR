@@ -29,7 +29,7 @@ public class NinjaController : MonoBehaviour
         // if returns false, gameObject is further than distToGroundLimit and should be destroyed
         if (!Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGroundLimit))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             Debug.Log("Ninja too high, destroyed");
             //gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         }

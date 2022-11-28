@@ -95,6 +95,15 @@ public class EnemyNavMeshV2 : MonoBehaviour
             Debug.Log(" navMeshEnabled: " + navMeshAgent.enabled);
         }
 
+        // test keybind for launching enemy backwards
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Rigidbody m_Rigidbody = GetComponent<Rigidbody>();
+            navMeshAgent.enabled = false;
+            Vector3 launchUpward = transform.forward * -20f + transform.up * 15f;
+            m_Rigidbody.velocity = launchUpward * 1;
+        }
+
     }
 
     private void Patroling()

@@ -8,7 +8,7 @@ public class PlayerHealthManager : MonoBehaviour
     float maxHealthPoints = 1000f;
     float speed;
     float healthPoints;
-    float spearDamage = 20f;
+    float trap_damage = 20f;
     string current_object;
     AudioSource m_hit;
 
@@ -93,7 +93,7 @@ public class PlayerHealthManager : MonoBehaviour
         // Currently meant for collision with SpearD objects inside SpikeTrapD objects
         if (IsGrounded()) // if the GameObject is currently airborne, it shouldn't be allowed to be launched again
         {
-            if(other.gameObject.name.Contains("SpearD"))
+            if(other.gameObject.name.Contains("SpearD") || other.gameObject.name.Contains("Blade"))
             {
                 // Create a new Vector for launching GameObject upwards
                 Vector3 launchUpward = transform.forward * -10f + transform.up * 5f;
@@ -104,7 +104,7 @@ public class PlayerHealthManager : MonoBehaviour
                 //m_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);
 
                 // spear hit is taking off 2x health each time trap is triggered; maybe because spears are hitting twice in quick succession?
-                TakeDamage(spearDamage);
+                TakeDamage(trap_damage);
             }
             else if(other.gameObject.name.Contains("mixamorig:RightHand") && current_object == "OVRPlayerController")
             {

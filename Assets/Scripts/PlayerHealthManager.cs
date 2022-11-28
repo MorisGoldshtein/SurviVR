@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerHealthManager : MonoBehaviour
     float spearDamage = 20f;
     string current_object;
     AudioSource m_hit;
+
+    public SceneChanger scene_changer;
     
     // use to find the distance from player to ground to check if player is currently grounded (so enemy can't be juggled in air)
     float distToGround;
@@ -70,6 +73,16 @@ public class PlayerHealthManager : MonoBehaviour
         }
     }
 
+    public int sceneBuildIndex;
+
+    private static string NameFromIndex(int BuildIndex)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
+    }
 
     //Code triggers on collision with another GameObject that has a Collider component with Is Trigger box checked
     private void OnTriggerEnter(Collider other)
@@ -108,10 +121,12 @@ public class PlayerHealthManager : MonoBehaviour
             {
                 //Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed: " + current_object);
-                //Destroy(gameObject);
+                Destroy(gameObject);
 
                 // load DeathScreen scene
-                UnityEngine.SceneManagement.SceneManager.LoadScene("DeathScreen");
+                //UnityEngine.SceneManagement.SceneManager.LoadScene("DeathScreen");
+                //scene_changer.LoadScene("DeathScreen");
+                GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene(NameFromIndex(6));
             }
         }
     }

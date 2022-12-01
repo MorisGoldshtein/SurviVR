@@ -28,6 +28,7 @@ public class SimpleShoot : MonoBehaviour
     public OVRGrabbable ss;
     public ScoreSystem scoreSys;
 
+    //MODIFIED: gun shoots lasers instead of bullets
     LineRenderer laserLine;
 
     void Start()
@@ -38,6 +39,7 @@ public class SimpleShoot : MonoBehaviour
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
 
+        //MODIFIED
         laserLine = GetComponent<LineRenderer>();
     }
 
@@ -64,6 +66,7 @@ public class SimpleShoot : MonoBehaviour
         gunAnimator.SetTrigger("Fire");
     }
 
+    //MODIFIED: Raycast functionality for laser shooting, destroying included
     void RayTest()
     {
         RaycastHit hit;
@@ -85,6 +88,7 @@ public class SimpleShoot : MonoBehaviour
         StartCoroutine(ShootLaser());
     }
 
+    //MODIFIED: laser animation
     IEnumerator ShootLaser()
     {
         laserLine.enabled = true;

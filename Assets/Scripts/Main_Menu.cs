@@ -11,6 +11,7 @@ public class Main_Menu : MonoBehaviour
         Debug.Log("quitted");
     }
 
+    //MODIFIED: Functions below allow for Death Screen 'RETRY' button functionality
     public void PlayLucas()
     {
         GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("WildWest");

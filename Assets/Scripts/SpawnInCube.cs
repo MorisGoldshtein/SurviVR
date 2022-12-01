@@ -75,7 +75,7 @@ public class SpawnInCube : MonoBehaviour
         while (true)
         {
             GameObject go = Instantiate(prefab, GetRandomPosition(), Quaternion.identity);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
         }
     }
 }

@@ -48114,7 +48114,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSwitcher
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1080482870637163530, guid: 848c86140ac7ac047851d0d5c066e4f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 848c86140ac7ac047851d0d5c066e4f0, type: 3}
 --- !u!4 &1394019210 stripped
 Transform:

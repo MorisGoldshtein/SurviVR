@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Enemy AI Testing.unity
     guid: bce73fb112ef44a51bf8bf516a7dbffc
+  - enabled: 1
+    path: Assets/Scenes/DeathScreen.unity
+    guid: 83878b039258cd54a87f29d232677699
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a7d3b4973a41f6041b3b7f1d18c58387, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9abedefc8fd96c5448deea722dff97ab, type: 2}

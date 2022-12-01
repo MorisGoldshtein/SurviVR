@@ -20,9 +20,15 @@ public class SimpleShoot : MonoBehaviour
     [Tooltip("Bullet Speed")] [SerializeField] private float shotPower = 500f;
     [Tooltip("Casing Ejection Speed")] [SerializeField] private float ejectPower = 150f;
 
-
     public AudioSource source;
     public AudioClip fireSound;
+    public SpawnInCube spawner;
+
+    private bool shooter = true;
+    public OVRGrabbable ss;
+    public ScoreSystem scoreSys;
+
+    LineRenderer laserLine;
 
     void Start()
     {
@@ -31,19 +37,60 @@ public class SimpleShoot : MonoBehaviour
 
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
+
+        laserLine = GetComponent<LineRenderer>();
+    }
+
+    void shooterFunc()
+    {
+        shooter = true;
     }
 
     void FixedUpdate()
     {
-        float rightTrigger = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
+        bool rightTrigger = OVRInput.Get(OVRInput.RawButton.RIndexTrigger);
         //If you want a different input, change it here
-        if (rightTrigger == 1.0f)
+
+        if (ss.isGrabbed && rightTrigger && shooter)
         {
+            shooter = false;
             //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
         }
     }
 
+    public void ShootAnim()
+    {
+        gunAnimator.SetTrigger("Fire");
+    }
+
+    void RayTest()
+    {
+        RaycastHit hit;
+        laserLine.SetPosition(0, barrelLocation.position);
+
+        if (Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hit, 1000))
+        {
+            laserLine.SetPosition(1, hit.point);
+            if (hit.transform.gameObject.tag == "Target") 
+            {
+                hit.transform.gameObject.GetComponent<enemy>().scoreUpdater();
+                Destroy(hit.transform.gameObject);
+            }
+        }
+        else
+        {
+            laserLine.SetPosition(1, barrelLocation.position + (barrelLocation.forward * 1000));
+        }
+        StartCoroutine(ShootLaser());
+    }
+
+    IEnumerator ShootLaser()
+    {
+        laserLine.enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        laserLine.enabled = false;
+    }
 
     //This function creates the bullet behavior
     void Shoot()
@@ -64,10 +111,6 @@ public class SimpleShoot : MonoBehaviour
         //cancels if there's no bullet prefeb
         if (!bulletPrefab)
         { return; }
-
-        // Create a bullet and add force on it in direction of the barrel
-        Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-
     }
 
     //This function creates a casing at the ejection slot

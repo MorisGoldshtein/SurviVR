@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//https://answers.unity.com/questions/537673/raycast-object-tag-check.html
+
 [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
 public class SimpleShoot : MonoBehaviour
 {
@@ -37,7 +39,7 @@ public class SimpleShoot : MonoBehaviour
 
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
-
+            
         laserLine = GetComponent<LineRenderer>();
     }
 
@@ -50,7 +52,7 @@ public class SimpleShoot : MonoBehaviour
     {
         bool rightTrigger = OVRInput.Get(OVRInput.RawButton.RIndexTrigger);
 
-        if (ss.isGrabbed && rightTrigger && shooter)
+        if (ss.isGrabbed && rightTrigger && shooter) //if the gun is grabbed and not in firing animation
         {
             shooter = false;
             //Calls animation on the gun that has the relevant animation events that will fire
@@ -63,6 +65,7 @@ public class SimpleShoot : MonoBehaviour
         gunAnimator.SetTrigger("Fire");
     }
 
+    //fire a raycast from gun barrel, check if target was hit, if so, update score and destroy target
     void RayTest()
     {
         RaycastHit hit;
@@ -84,6 +87,7 @@ public class SimpleShoot : MonoBehaviour
         StartCoroutine(ShootLaser());
     }
 
+    //display laser
     IEnumerator ShootLaser()
     {
         laserLine.enabled = true;

@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//https://answers.unity.com/questions/1657594/how-to-spawn-prefab-anywhere-within-box-collider-2.html
+
 public class SpawnInCube : MonoBehaviour
 {
+    //declare spawner and spawned prefab
     [SerializeField] GameObject prefab;
     [SerializeField] BoxCollider bc;
     [SerializeField] BoxCollider bc2;
     [SerializeField] BoxCollider bc3;
 
+    //Spawner attributes
     Vector3 cubeSize;
     Vector3 cubeCenter;
 
@@ -28,7 +32,7 @@ public class SpawnInCube : MonoBehaviour
         Transform cube3Trans = bc3.GetComponent<Transform>();
         cube3Center = cube3Trans.position;
 
-        // Multiply by scale because it does affect the size of the collider
+        // Multiply by scale
         cubeSize.x = cubeTrans.localScale.x * bc.size.x;
         cubeSize.y = cubeTrans.localScale.y * bc.size.y;
         cubeSize.z = cubeTrans.localScale.z * bc.size.z;
@@ -50,8 +54,7 @@ public class SpawnInCube : MonoBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        // You can also take off half the bounds of the thing you want in the box, so it doesn't extend outside.
-        // Right now, the center of the prefab could be right on the extents of the box
+        //choose a random spawner to spawn a target
         int chosenBoxInd = Random.Range(1, 4);
         if (chosenBoxInd == 1)
         {
@@ -72,6 +75,7 @@ public class SpawnInCube : MonoBehaviour
 
     IEnumerator SpawnLoop()
     {
+        //spawn targets indefinitely in two second intervals
         while (true)
         {
             GameObject go = Instantiate(prefab, GetRandomPosition(), Quaternion.identity);

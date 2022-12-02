@@ -26,6 +26,7 @@ public class enemy : MonoBehaviour
         ss.updateScore(inc);
     }
 
+    //Ignite enemy attack patterns
     IEnumerator Attacking()
     {
         Material mymat = GetComponent<Renderer>().material;

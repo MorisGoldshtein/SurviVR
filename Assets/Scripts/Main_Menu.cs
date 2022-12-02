@@ -11,6 +11,7 @@ public class Main_Menu : MonoBehaviour
         Debug.Log("quitted");
     }
 
+    //Add current scene to a list of past levels accessed
     public void PlayLucas()
     {
         GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("WildWest");

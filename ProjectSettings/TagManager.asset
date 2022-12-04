@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - RoomLight
   - SceneThing
+  - score
+  - Target
+  - health
   layers:
   - Default
   - TransparentFX

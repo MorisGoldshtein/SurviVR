@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SwordPlayerHealthManager : MonoBehaviour
 {
-    float maxHealthPoints = 1000f;
+    HealthSystem healthSystem;    
+    public float maxHealthPoints;
     float speed;
     float healthPoints;
     float spearDamage = 20f;
@@ -31,6 +32,8 @@ public class SwordPlayerHealthManager : MonoBehaviour
         m_CharCon = GetComponent<CharacterController>();
 
         current_object = gameObject.name;
+        healthSystem = GameObject.FindWithTag("health").GetComponent<HealthSystem>();
+        healthSystem.updateHealth((int)healthPoints);
 
         // get the "air-whistle-punch" audio file attached to the AudioSource component of the HitSound
         // child component of OVRPlayerController
@@ -60,12 +63,14 @@ public class SwordPlayerHealthManager : MonoBehaviour
     {
         healthPoints -= damage;
         Debug.Log("Hit registered, " + current_object + " HealthPoints at: " + healthPoints);
+        healthSystem.updateHealth((int)(-damage));
 
         // if damage would set healthPoints to do, gameObject is launched into stratosphere
         if (healthPoints <= damage)
         {
             // load DeathScreen scene
-            UnityEngine.SceneManagement.SceneManager.LoadScene("DeathScreen");
+            //UnityEngine.SceneManagement.SceneManager.LoadScene("DeathScreen");
+            GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("DeathScreen");
         }
         else
         {

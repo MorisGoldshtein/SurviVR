@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwordEnemyHealthManager : MonoBehaviour
 {
-    
+    ScoreSystem scoreSystem;    
     AudioSource sword_impact = null;
     Vector3 enemy_spawn_position;
     float maxHealthPoints = 200f;
@@ -30,6 +30,8 @@ public class SwordEnemyHealthManager : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         current_object = gameObject.name;
         enemy_spawn_position = gameObject.transform.position;
+        scoreSystem = GameObject.FindWithTag("score").GetComponent<ScoreSystem>();
+
     }
 
     bool IsGrounded()
@@ -60,6 +62,7 @@ public class SwordEnemyHealthManager : MonoBehaviour
             //Destroy(gameObject);
             gameObject.transform.position = enemy_spawn_position;
             healthPoints = 200f;
+            scoreSystem.updateScore(10);
         }
         else
         {

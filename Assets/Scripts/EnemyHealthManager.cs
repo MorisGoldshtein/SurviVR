@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealthManager : MonoBehaviour
 {
@@ -10,6 +12,16 @@ public class EnemyHealthManager : MonoBehaviour
     float trap_damage = 20f;
     string current_object;
     float playerDamage = 30f;
+
+    // used to keep track of current score
+    int score;
+
+    // If can_add_score is true, then the score can be increased. This is to prevent Update() from increasing the score several times
+    // for one death.
+    bool can_add_score;
+    
+    // get score component stored in OVRPlayerController
+    Text score_display;
 
     float distToGroundLimit = 40f;
 
@@ -30,6 +42,9 @@ public class EnemyHealthManager : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         current_object = gameObject.name;
         enemy_spawn_position = gameObject.transform.position;
+
+        score_display = GameObject.FindWithTag("score").GetComponent<Text>();
+        can_add_score = true;
     }
 
     bool IsGrounded()
@@ -41,12 +56,16 @@ public class EnemyHealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        if (!Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGroundLimit))
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGroundLimit) && can_add_score == true)
         {
             //Destroy(gameObject);
             Debug.Log("Ninja too high, destroyed");
-            Invoke(nameof(Respawn), 5f);
+            score += 100;
+            can_add_score = false;
+            Invoke(nameof(Respawn), 4f);          
         }
+
+        score_display.text = "" + score;
     }
 
     void TakeDamage(float damage)
@@ -59,7 +78,8 @@ public class EnemyHealthManager : MonoBehaviour
         {
             speed = 5;
             //Destroy(gameObject);
-            Invoke(nameof(Respawn), 5f);
+            score += 100;
+            Invoke(nameof(Respawn), 4f);
         }
         else
         {
@@ -102,7 +122,8 @@ public class EnemyHealthManager : MonoBehaviour
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
-                Invoke(nameof(Respawn), 5f);
+                score += 100;
+                Invoke(nameof(Respawn), 4f);
             }
         }
     }
@@ -112,5 +133,6 @@ public class EnemyHealthManager : MonoBehaviour
         healthPoints = maxHealthPoints;
         gameObject.transform.position = enemy_spawn_position;
         Debug.Log("Respawned with " + healthPoints + " health");
+        can_add_score = true;
     }
 }

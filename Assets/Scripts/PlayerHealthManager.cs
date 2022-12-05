@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
-    float maxHealthPoints = 1000f;
+    float maxHealthPoints = 300f;
     float speed;
     float healthPoints;
     float trap_damage = 5f;

@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
-    float maxHealthPoints = 1000f;
+    float maxHealthPoints = 300f;
     float speed;
     float healthPoints;
-    float trap_damage = 20f;
+    float trap_damage = 5f;
+    float enemy_damage = 50f;
     string current_object;
     AudioSource m_hit;
+    Slider healthBar;
 
     public SceneChanger scene_changer;
     
@@ -30,6 +33,10 @@ public class PlayerHealthManager : MonoBehaviour
         distToGround = GetComponent<Collider>().bounds.extents.y;
         m_Rigidbody = GetComponent<Rigidbody>();
         current_object = gameObject.name;
+
+        // get the Slider component corresponding to the player's health bar and set to maxHealth
+        healthBar = transform.GetChild(3).GetChild(0).GetComponent<Slider>();
+        healthBar.maxValue = maxHealthPoints;
 
         // get the "air-whistle-punch" audio file attached to the AudioSource component of the HitSound
         // child component of OVRPlayerController
@@ -58,6 +65,8 @@ public class PlayerHealthManager : MonoBehaviour
     void TakeDamage(float damage)
     {
         healthPoints -= damage;
+        healthBar.value = healthPoints;
+
         Debug.Log("Hit registered, " + current_object + " HealthPoints at: " + healthPoints);
 
         // if damage would set healthPoints to do, gameObject is launched into stratosphere
@@ -68,8 +77,8 @@ public class PlayerHealthManager : MonoBehaviour
         }
         else
         {
-            // slowly incremement launch speed based on how much damage GameObject has taken to a maximum of 1.5
-            speed = Mathf.Min(Mathf.Abs(maxHealthPoints - healthPoints) / 100, 3/2);
+            // slowly incremement launch speed based on how much damage GameObject has taken to a maximum of 1
+            speed = Mathf.Min(Mathf.Abs(maxHealthPoints - healthPoints) / 100, 0.75f);
         }
     }
 
@@ -110,12 +119,12 @@ public class PlayerHealthManager : MonoBehaviour
             {
                 // Create a new Vector for launching GameObject upwards
                 //Vector3 launchUpward = new Vector3(-10.0f, 20.0f, 0.0f);
-                Vector3 launchUpward = transform.forward * -10f + transform.up * 3f;
+                Vector3 launchUpward = transform.forward * -7f + transform.up * 2f;
                 // Set upward velocity of Ninja Gameobject
                 m_Rigidbody.velocity = launchUpward * speed;
                 //m_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);
                 m_hit.Play();
-                TakeDamage(10);
+                TakeDamage(enemy_damage);
             }
             else if(other.gameObject.name.Contains("Ocean"))
             {

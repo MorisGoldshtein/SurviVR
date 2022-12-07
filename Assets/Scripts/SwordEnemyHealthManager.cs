@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwordEnemyHealthManager : MonoBehaviour
 {
-    ScoreSystem scoreSystem;    
     AudioSource sword_impact = null;
     Vector3 enemy_spawn_position;
     float maxHealthPoints = 200f;
@@ -13,8 +14,14 @@ public class SwordEnemyHealthManager : MonoBehaviour
     float spearDamage = 20f;
     string current_object;
     
+    // used to keep track of current score
+    // int score;
+    
     // use to find the distance from player to ground to check if player is currently grounded (so enemy can't be juggled in air)
     float distToGround;
+
+    // get score component stored in OVRPlayerController
+    Text score_display;
 
     Rigidbody m_Rigidbody;
 
@@ -30,7 +37,7 @@ public class SwordEnemyHealthManager : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         current_object = gameObject.name;
         enemy_spawn_position = gameObject.transform.position;
-        scoreSystem = GameObject.FindWithTag("score").GetComponent<ScoreSystem>();
+        score_display = GameObject.FindWithTag("score").GetComponent<Text>();
 
     }
 
@@ -62,7 +69,8 @@ public class SwordEnemyHealthManager : MonoBehaviour
             //Destroy(gameObject);
             gameObject.transform.position = enemy_spawn_position;
             healthPoints = 200f;
-            scoreSystem.updateScore(10);
+            // score += 100;      
+            score_display.text = (Int32.Parse(score_display.text) + 100).ToString();
         }
         else
         {

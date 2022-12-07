@@ -19,7 +19,7 @@ public class Main_Menu : MonoBehaviour
 
     public void PlayDillon()
     {
-        GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("Enemy AI Testing");
+        GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene("Restaurant Brawl");
     }
 
     public void PlayKen()

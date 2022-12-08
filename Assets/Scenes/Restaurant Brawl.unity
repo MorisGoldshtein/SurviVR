@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4402001, g: 0.48873532, b: 0.5689154, a: 1}
+  m_IndirectSpecularColor: {r: 0.4377298, g: 0.4855621, b: 0.5664034, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1400,6 +1400,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 6328895013131411130, guid: ba2ce6c4afd65e2429342d441381673d, type: 3}
+      propertyPath: _trackingOriginType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6328895013138446206, guid: ba2ce6c4afd65e2429342d441381673d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1460,6 +1464,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 1532c7e67c2d60c4c8780da14b7e8fcf, type: 3}
+    - target: {fileID: 6328895014360170105, guid: ba2ce6c4afd65e2429342d441381673d, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6328895014360170105, guid: ba2ce6c4afd65e2429342d441381673d, type: 3}
       propertyPath: m_Radius
       value: 0.1
@@ -11409,7 +11417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
+  m_allowOffhandGrab: 0
   m_snapPosition: 0
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
@@ -18554,7 +18562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
+  m_allowOffhandGrab: 0
   m_snapPosition: 0
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}

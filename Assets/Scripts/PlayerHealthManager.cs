@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
-    float maxHealthPoints = 300f;
+    public float maxHealthPoints = 300f;
     float speed;
     float healthPoints;
     float trap_damage = 5f;
@@ -24,6 +24,17 @@ public class PlayerHealthManager : MonoBehaviour
 
     // This is the AI that is being controlled
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
+
+    public int sceneBuildIndex;
+
+    private static string NameFromIndex(int BuildIndex)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -73,24 +84,14 @@ public class PlayerHealthManager : MonoBehaviour
         if (healthPoints <= damage)
         {
             // load DeathScreen scene
-            UnityEngine.SceneManagement.SceneManager.LoadScene("DeathScreen");
+            Destroy(gameObject);
+            GameObject.FindWithTag("SceneThing").GetComponent<SceneChanger>().LoadScene(NameFromIndex(6));
         }
         else
         {
             // slowly incremement launch speed based on how much damage GameObject has taken to a maximum of 1
             speed = Mathf.Min(Mathf.Abs(maxHealthPoints - healthPoints) / 100, 0.75f);
         }
-    }
-
-    public int sceneBuildIndex;
-
-    private static string NameFromIndex(int BuildIndex)
-    {
-        string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
-        int slash = path.LastIndexOf('/');
-        string name = path.Substring(slash + 1);
-        int dot = name.LastIndexOf('.');
-        return name.Substring(0, dot);
     }
 
     //Code triggers on collision with another GameObject that has a Collider component with Is Trigger box checked

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwordPlayerHealthManager : MonoBehaviour
 {
-    HealthSystem healthSystem;    
+    Slider healthbar;
+
     public float maxHealthPoints;
     float speed;
     float healthPoints;
@@ -32,8 +34,9 @@ public class SwordPlayerHealthManager : MonoBehaviour
         m_CharCon = GetComponent<CharacterController>();
 
         current_object = gameObject.name;
-        healthSystem = GameObject.FindWithTag("health").GetComponent<HealthSystem>();
-        healthSystem.updateHealth((int)healthPoints);
+        healthbar = transform.GetChild(3).GetChild(0).GetComponent<Slider>();
+        healthbar.maxValue = maxHealthPoints;
+
 
         // get the "air-whistle-punch" audio file attached to the AudioSource component of the HitSound
         // child component of OVRPlayerController
@@ -63,7 +66,7 @@ public class SwordPlayerHealthManager : MonoBehaviour
     {
         healthPoints -= damage;
         Debug.Log("Hit registered, " + current_object + " HealthPoints at: " + healthPoints);
-        healthSystem.updateHealth((int)(-damage));
+        healthbar.value = healthPoints;
 
         // if damage would set healthPoints to do, gameObject is launched into stratosphere
         if (healthPoints <= damage)

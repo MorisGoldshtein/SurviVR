@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class EnemyHealthManager : MonoBehaviour
 {
-    public float maxHealthPoints;
+    float maxHealthPoints = 200f;
     float speed;
-    float healthPoints;
+    [HideInInspector] // want healthPoints to be accessed by EnemyNavMesh but dont want it visible in Inspector
+    public float healthPoints;
     float trap_damage = 20f;
     string current_object;
     float playerDamage = 30f;
@@ -33,6 +34,9 @@ public class EnemyHealthManager : MonoBehaviour
 
     Rigidbody m_Rigidbody;
 
+    // used to trigger death animation upon dying
+    Animator m_Animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +49,8 @@ public class EnemyHealthManager : MonoBehaviour
 
         score_display = GameObject.FindWithTag("score").GetComponent<Text>();
         can_add_score = true;
+
+        m_Animator = gameObject.GetComponent<Animator>();
     }
 
     bool IsGrounded()
@@ -55,17 +61,23 @@ public class EnemyHealthManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        score = int.Parse(score_display.text);
         if (!Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGroundLimit) && can_add_score == true)
         {
             //Destroy(gameObject);
             Debug.Log("Ninja too high, destroyed");
             score += 100;
             can_add_score = false;
-            Invoke(nameof(Respawn), 4f);          
+            Invoke(nameof(Respawn), 10f);          
         }
 
         score_display.text = "" + score;
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            TakeDamage(20f);
+        }
     }
 
     void TakeDamage(float damage)
@@ -76,10 +88,10 @@ public class EnemyHealthManager : MonoBehaviour
         // if damage would set healthPoints to do, gameObject is launched into stratosphere
         if (healthPoints <= 0)
         {
-            speed = 5;
-            //Destroy(gameObject);
             score += 100;
-            Invoke(nameof(Respawn), 4f);
+            speed = 3;
+            //Destroy(gameObject);
+            Invoke(nameof(Respawn), 10f);
         }
         else
         {
@@ -113,7 +125,7 @@ public class EnemyHealthManager : MonoBehaviour
             }
             else if (other.gameObject.name.Contains("CustomHand"))
             {
-                Vector3 launchUpward = transform.forward * -10f + transform.up * 5f;
+                Vector3 launchUpward = transform.forward * -1f;
                 m_Rigidbody.velocity = launchUpward * speed;
                 TakeDamage(playerDamage);
             }
@@ -130,8 +142,8 @@ public class EnemyHealthManager : MonoBehaviour
 
     private void Respawn()
     {
-        healthPoints = maxHealthPoints;
         gameObject.transform.position = enemy_spawn_position;
+        healthPoints = maxHealthPoints;
         Debug.Log("Respawned with " + healthPoints + " health");
         can_add_score = true;
     }

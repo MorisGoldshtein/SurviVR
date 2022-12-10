@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class PlayerHealthManager : MonoBehaviour
 {
-    public float maxHealthPoints = 300f;
+    float maxHealthPoints = 1000f;
     float speed;
     float healthPoints;
     float trap_damage = 5f;
-    float enemy_damage = 50f;
+    float punch_damage = 30f;
+    float kick_damage = 50f;
     string current_object;
     AudioSource m_hit;
     Slider healthBar;
@@ -48,6 +49,7 @@ public class PlayerHealthManager : MonoBehaviour
         // get the Slider component corresponding to the player's health bar and set to maxHealth
         healthBar = transform.GetChild(3).GetChild(0).GetComponent<Slider>();
         healthBar.maxValue = maxHealthPoints;
+        healthBar.value = maxHealthPoints;
 
         // get the "air-whistle-punch" audio file attached to the AudioSource component of the HitSound
         // child component of OVRPlayerController
@@ -116,6 +118,17 @@ public class PlayerHealthManager : MonoBehaviour
                 // spear hit is taking off 2x health each time trap is triggered; maybe because spears are hitting twice in quick succession?
                 TakeDamage(trap_damage);
             }
+            else if(other.gameObject.name.Contains("mixamorig:RightLeg") && current_object == "OVRPlayerController")
+            {
+                // Create a new Vector for launching GameObject upwards
+                //Vector3 launchUpward = new Vector3(-10.0f, 20.0f, 0.0f);
+                Vector3 launchUpward = transform.forward * -7f + transform.up * 2f;
+                // Set upward velocity of Ninja Gameobject
+                m_Rigidbody.velocity = launchUpward * speed;
+                //m_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);
+                m_hit.Play();
+                TakeDamage(kick_damage);
+            }
             else if(other.gameObject.name.Contains("mixamorig:RightHand") && current_object == "OVRPlayerController")
             {
                 // Create a new Vector for launching GameObject upwards
@@ -125,7 +138,7 @@ public class PlayerHealthManager : MonoBehaviour
                 m_Rigidbody.velocity = launchUpward * speed;
                 //m_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);
                 m_hit.Play();
-                TakeDamage(enemy_damage);
+                TakeDamage(punch_damage);
             }
             else if(other.gameObject.name.Contains("Ocean"))
             {

@@ -109,12 +109,17 @@ public class SwordPlayerHealthManager : MonoBehaviour
             {
                 // Create a new Vector for launching GameObject upwards
                 //Vector3 launchUpward = new Vector3(-10.0f, 20.0f, 0.0f);
-                Vector3 launchUpward = transform.forward * -10f + transform.up * 3f;
                 // Set upward velocity of Ninja Gameobject
                 //m_Rigidbody.velocity = launchUpward * speed;
                 //m_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);
                 m_hit.Play();
                 TakeDamage(10);
+            }
+             else if(other.gameObject.name.Contains("mixamorig:RightLeg") && current_object == "OVRPlayerController")
+            {
+                // Create a new Vector for launching GameObject upwards
+                m_hit.Play();   // play sound of getting hit
+                TakeDamage(7);
             }
             else if(other.gameObject.name.Contains("Ocean"))
             {

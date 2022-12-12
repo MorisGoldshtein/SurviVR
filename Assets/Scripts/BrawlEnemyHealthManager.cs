@@ -8,7 +8,8 @@ public class BrawlEnemyHealthManager : MonoBehaviour
 {
     public float maxHealthPoints;
     float speed;
-    float healthPoints;
+    [HideInInspector] // want healthPoints to be accessed by EnemyNavMesh but dont want it visible in Inspector
+    public float healthPoints;
     float trap_damage = 20f;
     string current_object;
     float playerDamage = 30f;
@@ -152,7 +153,7 @@ public class BrawlEnemyHealthManager : MonoBehaviour
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 0.1f);
+                Invoke(nameof(Respawn), 4f);
             }
             else if(other.gameObject.name.Contains("chair") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
             {
@@ -160,7 +161,7 @@ public class BrawlEnemyHealthManager : MonoBehaviour
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 0.1f);
+                Invoke(nameof(Respawn), 4f);
             }
             else if(other.gameObject.name.Contains("table") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
             {
@@ -168,7 +169,7 @@ public class BrawlEnemyHealthManager : MonoBehaviour
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 0.1f);
+                Invoke(nameof(Respawn), 4f);
             }
             else if(other.gameObject.name.Contains("cash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
             {
@@ -176,7 +177,7 @@ public class BrawlEnemyHealthManager : MonoBehaviour
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 0.1f);
+                Invoke(nameof(Respawn), 4f);
             }
             else if(other.gameObject.name.Contains("flowers") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
             {
@@ -184,7 +185,7 @@ public class BrawlEnemyHealthManager : MonoBehaviour
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 0.1f);
+                Invoke(nameof(Respawn), 4f);
             }
         }
     
@@ -192,9 +193,8 @@ public class BrawlEnemyHealthManager : MonoBehaviour
 
     private void Respawn()
     {
-        healthPoints = maxHealthPoints;
         gameObject.transform.position = enemy_spawn_position;
+        healthPoints = maxHealthPoints;
         Debug.Log("Respawned with " + healthPoints + " health");
-        can_add_score = true;
     }
 }

@@ -31,7 +31,7 @@ public class TeleportSwords : MonoBehaviour
             gameObject.transform.rotation = new Quaternion(0,0,0,0);
             //gameObject.transform.position = new Vector3(33.8f,5f,1.4f);
             gameObject.transform.position = sword_spawn_position;
-            Instantiate(gameObject,sword_spawn_position,new Quaternion(0,0,0,0));
+            Instantiate(gameObject,sword_spawn_position,new Quaternion(0,90,0,0));
             Destroy(gameObject);
         }
     }

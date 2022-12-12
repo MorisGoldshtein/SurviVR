@@ -86,10 +86,11 @@ public class FistEnemyHealthManager : MonoBehaviour
         Debug.Log("Hit registered, " + current_object + " HealthPoints at: " + healthPoints);
 
         // if damage would set healthPoints to do, gameObject is launched into stratosphere
-        if (healthPoints <= 0)
+        if (healthPoints <= 0 && healthPoints > -damage)
         {
             score += 100;
             speed = 3;
+            score_display.text = "" + score;
             //Destroy(gameObject);
             Invoke(nameof(Respawn), 10f);
         }

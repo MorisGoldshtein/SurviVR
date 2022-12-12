@@ -68,9 +68,9 @@ public class SwordEnemyHealthManager : MonoBehaviour
         {
             speed = 5;
             //Destroy(gameObject);
-            healthPoints = 200f;
+            // healthPoints = 200f;
             score_display.text = (Int32.Parse(score_display.text) + 100).ToString();
-            Invoke(nameof(Respawn), 4f);         
+            Invoke(nameof(Respawn), 3f);         
         }
         else
         {

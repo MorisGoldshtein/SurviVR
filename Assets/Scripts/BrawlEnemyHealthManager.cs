@@ -147,45 +147,50 @@ public class BrawlEnemyHealthManager : MonoBehaviour
             //     m_Rigidbody.velocity = launchUpward * speed;
             //     TakeDamage(playerDamage);
             // }
-            else if(other.gameObject.name.Contains("trash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
+            else if(other.gameObject.name.Contains("trash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 4f);
+                healthPoints = 0;
+                Invoke(nameof(Respawn), 3f);
             }
-            else if(other.gameObject.name.Contains("chair") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
+            else if(other.gameObject.name.Contains("chair") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 4f);
+                healthPoints = 0;
+                Invoke(nameof(Respawn), 3f);
             }
-            else if(other.gameObject.name.Contains("table") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
+            else if(other.gameObject.name.Contains("table") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 4f);
+                healthPoints = 0;
+                Invoke(nameof(Respawn), 3f);
             }
-            else if(other.gameObject.name.Contains("cash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
+            else if(other.gameObject.name.Contains("cash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 4f);
+                healthPoints = 0;
+                Invoke(nameof(Respawn), 3f);
             }
-            else if(other.gameObject.name.Contains("flowers") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed)
+            else if(other.gameObject.name.Contains("flowers") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
                 score += 100;
-                Invoke(nameof(Respawn), 4f);
+                healthPoints = 0;
+                Invoke(nameof(Respawn), 3f);
             }
         }
     

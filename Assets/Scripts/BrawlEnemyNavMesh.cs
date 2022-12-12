@@ -100,7 +100,7 @@ public class BrawlEnemyNavMesh : MonoBehaviour
             canWalk = false;
             m_Animator.Rebind(); // resets enemy animations
             m_Animator.SetTrigger("DeathTrigger"); // starts death animation
-            Invoke(nameof(ResetAfterDeath), 4f);
+            Invoke(nameof(ResetAfterDeath), 3f);
         }
 
         if (!Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), 10f))

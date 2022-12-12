@@ -116,6 +116,12 @@ public class BrawlPlayerHealthManager : MonoBehaviour
                 m_hit.Play();
                 TakeDamage(10);
             }
+            else if(other.gameObject.name.Contains("mixamorig:RightLeg") && current_object == "OVRPlayerController")
+            {
+                // Create a new Vector for launching GameObject upwards
+                m_hit.Play();   // play sound of getting hit
+                TakeDamage(7);
+            }
             else if(other.gameObject.name.Contains("Ocean"))
             {
                 //Debug.Log("Name of the object: " + other.gameObject.name);

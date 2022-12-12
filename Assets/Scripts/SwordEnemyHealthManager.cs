@@ -10,7 +10,8 @@ public class SwordEnemyHealthManager : MonoBehaviour
     Vector3 enemy_spawn_position;
     float maxHealthPoints = 200f;
     float speed;
-    float healthPoints;
+    [HideInInspector] // want healthPoints to be accessed by EnemyNavMesh but dont want it visible in Inspector
+    public float healthPoints;
     float spearDamage = 20f;
     string current_object;
     
@@ -63,14 +64,13 @@ public class SwordEnemyHealthManager : MonoBehaviour
         Debug.Log("Hit registered, " + current_object + " HealthPoints at: " + healthPoints);
 
         // if damage would set healthPoints to do, gameObject is launched into stratosphere
-        if (healthPoints <= 0)
+        if (healthPoints <= 0 && healthPoints > -damage)
         {
             speed = 5;
             //Destroy(gameObject);
-            gameObject.transform.position = enemy_spawn_position;
-            healthPoints = 200f;
-            // score += 100;      
+            // healthPoints = 200f;
             score_display.text = (Int32.Parse(score_display.text) + 100).ToString();
+            Invoke(nameof(Respawn), 3f);         
         }
         else
         {
@@ -117,5 +117,12 @@ public class SwordEnemyHealthManager : MonoBehaviour
                 TakeDamage(40);
             }
         // }
+    }
+
+    private void Respawn()
+    {
+        gameObject.transform.position = enemy_spawn_position;
+        healthPoints = maxHealthPoints;
+        Debug.Log("Respawned with " + healthPoints + " health");
     }
 }

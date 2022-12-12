@@ -26,7 +26,7 @@ public class EnemyNavMeshV2 : MonoBehaviour
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
     public GameObject projectile;
-    bool canWalk;   // set to false for 2 seconds after an attack so enemy can't move while punching
+    bool canWalk;   // set to false for few seconds after an attack so enemy can't move while attacking
 
     // distance from the player pivot to the bottom of the player box collider
     float distToGround;
@@ -62,15 +62,9 @@ public class EnemyNavMeshV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //  Go to marked location
-        // navMeshAgent.destination = movePositionTransform.position; 
-
         //  Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-        // playerInSightRange = false;  //  for testing purposes
-        // playerInAttackRange = false; //  for testing purposes
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -88,6 +82,7 @@ public class EnemyNavMeshV2 : MonoBehaviour
             navMeshAgent.enabled = true;
         }
 
+        // keyboard input used for testing purposes only; not available in VR mode
         if (Input.GetKeyDown(KeyCode.M))
         {
             Debug.Log("y-velocity: " + enemy_Rigidbody.velocity.y);
@@ -154,9 +149,6 @@ public class EnemyNavMeshV2 : MonoBehaviour
         if (!alreadyAttacked)
         {
             /// Attack code here!
-            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             navMeshAgent.enabled = false;
             canWalk = false;
             m_punch.enabled = true; // enables audio component
@@ -164,8 +156,6 @@ public class EnemyNavMeshV2 : MonoBehaviour
             m_Animator.Rebind(); // resets enemy animations
             m_Animator.SetTrigger("PunchTrigger"); // starts punch animation
             Rigidbody hand_Rigidbody = hand_gameObject.GetComponent<Rigidbody>();
-            //Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
-            //hand_Collider.enabled = true;
             hand_Rigidbody.AddForce(transform.forward * 15f, ForceMode.Impulse);
             hand_Rigidbody.AddForce(transform.up * 8f, ForceMode.Impulse);
             alreadyAttacked = true;
@@ -178,14 +168,13 @@ public class EnemyNavMeshV2 : MonoBehaviour
 
     bool IsGrounded()
     {
-        // enemy is grounded if it's not falling
+        // check if enemy is currently standing on ground or close to it
         return Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), distToGround + 1.3f);
     }
 
     //Code triggers on collision with another GameObject that has a Collider component with Is Trigger box checked
     private void OnTriggerEnter(Collider other)
     {
-        // Currently meant for collision with SpearD objects inside SpikeTrapD objects
         if (IsGrounded() && other.gameObject.name.Contains("SpearD")) // if the GameObject is currently airborne, it shouldn't be allowed to be launched again
         {
             //Debug.Log("navMeshAgent disabled");
@@ -193,13 +182,13 @@ public class EnemyNavMeshV2 : MonoBehaviour
         }
     }
 
-    private void AllowPunchCollision() // used to disable hand collider and allow enemy to walk again after 1.5 seconds (i.e. length of time it takes to finish 1 punch animation)
+    private void AllowPunchCollision() // used to enable hand collider and allow enemy punch to land
     {
         Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
         hand_Collider.enabled = true;
     }
 
-    private void ResetAfterAttack() // used to disable hand collider and allow enemy to walk again after 1.5 seconds (i.e. length of time it takes to finish 1 punch animation)
+    private void ResetAfterAttack() // used to disable hand collider and allow enemy to walk again after attack animation is finished
     {
         Collider hand_Collider = hand_gameObject.GetComponent<Collider>();
         hand_Collider.enabled = false;

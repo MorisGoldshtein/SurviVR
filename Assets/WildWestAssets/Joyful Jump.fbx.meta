@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: b03aa87138bc52a4da06ca36e99d1418
+=======
+guid: c19744a5634f37a4ab4c9b83e742ce36
+>>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -13,7 +17,11 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
+<<<<<<< Updated upstream
     optimizeGameObjects: 0
+=======
+    optimizeGameObjects: 1
+>>>>>>> Stashed changes
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
@@ -33,7 +41,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
+<<<<<<< Updated upstream
       name: JUMP
+=======
+      name: mixamo.com
+>>>>>>> Stashed changes
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -71,8 +83,13 @@ ModelImporter:
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
+<<<<<<< Updated upstream
     importCameras: 0
     importLights: 0
+=======
+    importCameras: 1
+    importLights: 1
+>>>>>>> Stashed changes
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0

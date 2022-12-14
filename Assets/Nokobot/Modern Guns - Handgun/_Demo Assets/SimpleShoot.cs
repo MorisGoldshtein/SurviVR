@@ -91,7 +91,7 @@ public class SimpleShoot : MonoBehaviour
     IEnumerator ShootLaser()
     {
         laserLine.enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         laserLine.enabled = false;
     }
 

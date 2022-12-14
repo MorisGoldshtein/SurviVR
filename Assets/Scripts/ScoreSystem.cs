@@ -20,19 +20,11 @@ public class ScoreSystem : MonoBehaviour
 
         if (score % 50 == 0)
         {
-<<<<<<< Updated upstream
-            cheerleader.SetBool("Score5", true);
-        }
-        else
-        {
-            cheerleader.SetBool("Score5", false);
-=======
             cheerleader.SetBool("score50", true);
         }
         else
         {
             cheerleader.SetBool("score50", false);
->>>>>>> Stashed changes
         }
 
         tm.SetText(score.ToString());

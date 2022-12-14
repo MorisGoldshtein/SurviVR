@@ -58,6 +58,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Core\Locomotion\Scripts\TeleportSupport.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\ButtonController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\CustomHands\Scripts\Hand.cs" />
+     <Compile Include="Assets\Scripts\ConstrainedGrabbable.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Passthrough\Scripts\Flashlight.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\SpatialAnchor\Scripts\AnchorSpawner.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Locomotion\Scripts\CharacterCapsule.cs" />
@@ -134,6 +135,7 @@
      <Compile Include="Assets\Oculus\SampleFramework\Core\Video\Scripts\VectorUtil.cs" />
      <Compile Include="Assets\Scripts\BrawlEnemyHealthManager.cs" />
      <Compile Include="Assets\Scripts\BrawlPlayerHealthManager.cs" />
+     <Compile Include="Assets\Scripts\BrawlEnemyNavMesh2.cs" />
      <Compile Include="Assets\Scripts\NinjaController.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Core\HandsInteraction\Scripts\InteractableToolsCreator.cs" />
      <Compile Include="Assets\Oculus\SampleFramework\Usage\Firebase\SampleUI.cs" />

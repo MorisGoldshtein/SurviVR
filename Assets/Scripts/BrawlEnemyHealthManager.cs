@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -90,12 +91,12 @@ public class BrawlEnemyHealthManager : MonoBehaviour
         {
             //Destroy(gameObject);
             Debug.Log("Ninja too high, destroyed");
-            score += 100;
+            //score += 100;
             can_add_score = false;
             Invoke(nameof(Respawn), 4f);          
         }
 
-        score_display.text = "" + score;
+        //score_display.text = "" + score;
     }
 
     void TakeDamage(float damage)
@@ -147,48 +148,48 @@ public class BrawlEnemyHealthManager : MonoBehaviour
             //     m_Rigidbody.velocity = launchUpward * speed;
             //     TakeDamage(playerDamage);
             // }
-            else if(other.gameObject.name.Contains("trash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
+            else if(other.gameObject.name.Contains("trash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0 && other.gameObject.GetComponent<OVRGrabbable>().timeSinceLetGo.IsRunning)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
-                score += 100;
+                score_display.text = (Int32.Parse(score_display.text) + 100).ToString();
                 healthPoints = 0;
                 Invoke(nameof(Respawn), 3f);
             }
-            else if(other.gameObject.name.Contains("chair") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
+            else if(other.gameObject.name.Contains("chair") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0 && other.gameObject.GetComponent<OVRGrabbable>().timeSinceLetGo.IsRunning)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
-                score += 100;
+                score_display.text = (Int32.Parse(score_display.text) + 100).ToString();
                 healthPoints = 0;
                 Invoke(nameof(Respawn), 3f);
             }
-            else if(other.gameObject.name.Contains("table") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
+            else if(other.gameObject.name.Contains("table") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0 && other.gameObject.GetComponent<OVRGrabbable>().timeSinceLetGo.IsRunning)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
-                score += 100;
+                score_display.text = (Int32.Parse(score_display.text) + 100).ToString();
                 healthPoints = 0;
                 Invoke(nameof(Respawn), 3f);
             }
-            else if(other.gameObject.name.Contains("cash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
+            else if(other.gameObject.name.Contains("cash") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0 && other.gameObject.GetComponent<OVRGrabbable>().timeSinceLetGo.IsRunning)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
-                score += 100;
+                score_display.text = (Int32.Parse(score_display.text) + 100).ToString();
                 healthPoints = 0;
                 Invoke(nameof(Respawn), 3f);
             }
-            else if(other.gameObject.name.Contains("flowers") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0)
+            else if(other.gameObject.name.Contains("flowers") && !other.gameObject.GetComponent<OVRGrabbable>().isGrabbed && healthPoints > 0 && other.gameObject.GetComponent<OVRGrabbable>().timeSinceLetGo.IsRunning)
             {
                 Debug.Log("Name of the object: " + other.gameObject.name);
                 Debug.Log("Destroyed something");
                 //Destroy(gameObject);
-                score += 100;
+                score_display.text = (Int32.Parse(score_display.text) + 100).ToString();
                 healthPoints = 0;
                 Invoke(nameof(Respawn), 3f);
             }

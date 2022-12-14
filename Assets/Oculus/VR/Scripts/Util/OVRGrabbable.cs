@@ -49,6 +49,10 @@ public class OVRGrabbable : MonoBehaviour
         get { return m_allowOffhandGrab; }
     }
 
+    // MODIFIED BY MORIS: PURPOSE IS TO COUNT TIME SINCE THROWN SO THAT OBJ CAN ONLY HURT ENEMY AFTER THROWN WITHIN A SMALL PERIOD OF TIME
+    [HideInInspector]
+    public System.Diagnostics.Stopwatch timeSinceLetGo = new System.Diagnostics.Stopwatch();
+
 	/// <summary>
 	/// If true, the object is currently grabbed.
 	/// </summary>
@@ -121,6 +125,11 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        // MODIFIED BY MORIS: EDGE CASE HANDLER OF REPICKING UP OBJ AFTER THROWN AND TIME IS STILL GOING, STOP TIME
+        if(timeSinceLetGo.IsRunning){
+                timeSinceLetGo.Stop();
+                timeSinceLetGo.Reset();
+        }
     }
 
 	/// <summary>
@@ -134,6 +143,8 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
+        // MODIFIED BY MORIS: TIMER STARTS AFTER BEING THROWN
+        timeSinceLetGo.Start();
     }
 
     void Awake()
@@ -163,6 +174,16 @@ public class OVRGrabbable : MonoBehaviour
         {
             // Notify the hand to release destroyed grabbables
             m_grabbedBy.ForceRelease(this);
+        }
+    }
+
+    void Update(){
+        if(timeSinceLetGo.IsRunning){
+            if (timeSinceLetGo.Elapsed.Seconds > 2){
+                // MODIFIED BY MORIS: RESET AFTER 2 SECONDS SO THE OBJ CAN NO LONGER CAUSE HARM
+                timeSinceLetGo.Stop();
+                timeSinceLetGo.Reset();
+            }
         }
     }
 }

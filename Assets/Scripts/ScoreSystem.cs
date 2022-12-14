@@ -7,6 +7,7 @@ public class ScoreSystem : MonoBehaviour
 {
     public static int score;
     public TMP_Text tm;
+    public Animator cheerleader;
 
     void Start()
     {
@@ -16,6 +17,16 @@ public class ScoreSystem : MonoBehaviour
     public void updateScore(int num)
     {
         score += num;
+
+        if (score % 50 == 0)
+        {
+            cheerleader.SetBool("Score5", true);
+        }
+        else
+        {
+            cheerleader.SetBool("Score5", false);
+        }
+
         tm.SetText(score.ToString());
     }
 }

@@ -5,6 +5,12 @@ furniture at them, or take part in a fast-faced shooting challenge.
 
 NOTE: This game is currently only fully compatible with Oculus devices that come with dual handheld controllers as OVR toolkit was used for development.
 
+# Group Members
+* Moris Goldshtein
+* Ken Ko
+* Lucas Gunkel
+* Dillon Phong
+
 # Replication
 1. Install Unity version 2021.3.15f1 and open the project. More recent versions may be compatible, but Unity warns against older versions.
 2. In File -> Build Settings, ensure platform is set to Android 
